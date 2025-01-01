@@ -8,6 +8,8 @@
 name: Make PassWall2 run files
 
 on:
+  schedule:
+    - cron: '0 0 * * *'
   workflow_dispatch:
     inputs:
       package_version:
@@ -27,7 +29,7 @@ jobs:
         run: |
           git clone https://github.com/megastep/makeself.git
 
-      - name: Create directories for x86_64 and a53 and set PACKAGE_VERSION
+      - name: Create directories for x86_64 和 a53 和 set PACKAGE_VERSION
         run: |
           mkdir -p x86_64/depends a53/depends
           package_version="${{ github.event.inputs.package_version }}"
